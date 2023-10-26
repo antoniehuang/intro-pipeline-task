@@ -30,4 +30,4 @@ jobs:
           aws sts get-caller-identity
       - name: Deploy Lambda to AWS
         run: |
-          aws lambda update-function-code --function-name poc-python-lambda --zip-file fileb://python-lambda.zip
+          aws lambda update-function-code --function-name intro-pipeline-task-lambda-terraform --zip-file fileb://lambda.zip
