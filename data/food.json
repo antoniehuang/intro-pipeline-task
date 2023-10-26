@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Pizza",
+        "ingredients": [
+            "Dough",
+            "Tomato Sauce",
+            "Cheese",
+            "Pepperoni"
+        ],
+        "price": 12.99,
+        "is_vegetarian": false
+    },
+    {
+        "name": "Sushi",
+        "ingredients": [
+            "Rice",
+            "Fish",
+            "Seaweed",
+            "Soy Sauce"
+        ],
+        "price": 15.99,
+        "is_vegetarian": false
+    },
+    {
+        "name": "Salad",
+        "ingredients": [
+            "Lettuce",
+            "Tomatoes",
+            "Cucumbers",
+            "Dressing"
+        ],
+        "price": 7.99,
+        "is_vegetarian": true
+    },
+    {
+        "name": "Burger",
+        "ingredients": [
+            "Bun",
+            "Beef Patty",
+            "Lettuce",
+            "Tomato",
+            "Onion"
+        ],
+        "price": 9.99,
+        "is_vegetarian": false
+    },
+    {
+        "name": "Pasta",
+        "ingredients": [
+            "Pasta",
+            "Tomato Sauce",
+            "Parmesan Cheese"
+        ],
+        "price": 11.99,
+        "is_vegetarian": true
+    }
+]
