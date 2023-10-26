@@ -1,4 +1,4 @@
-resource "aws_sqs_queue" "terraform_queue" {
+resource "aws_sqs_queue" "source_bucket_event_sqs_queue" {
   name = "intro-pipeline-task-queue-terraform"
 
   tags = {
