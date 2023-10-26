@@ -1,0 +1,33 @@
+name: Deploy AWS Lambda
+on:
+  push:
+    branches:
+      - main
+
+# Permission can be added at job level or workflow level    
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+jobs:
+  lambda:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lambda
+    steps:
+      - uses: actions/checkout@v3
+      - run: zip -r -j lambda.zip .
+      - run: unzip -l lambda.zip
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::114888082308:role/GitHubAction-AssumeRoleWithAction
+          aws-region: eu-west-1
+      # Hello from AWS: WhoAmI
+      - name: Sts GetCallerIdentity
+        run: |
+          aws sts get-caller-identity
+      - name: Deploy Lambda to AWS
+        run: |
+          aws lambda update-function-code --function-name poc-python-lambda --zip-file fileb://python-lambda.zip
