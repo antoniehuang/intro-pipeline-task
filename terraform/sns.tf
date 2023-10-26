@@ -1,3 +1,3 @@
-resource "aws_sns_topic" "sns_topic" {
+resource "aws_sns_topic" "source_bucket_event_sns_topic" {
   name = "intro-pipeline-task-topic-terraform"
 }
