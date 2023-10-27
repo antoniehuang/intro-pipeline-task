@@ -23,7 +23,7 @@ resource "aws_lambda_event_source_mapping" "sqs_lambda_trigger" {
   batch_size       = 1
 }
 
-resource "aws_cloudwatch_log_group" "example" {
+resource "aws_cloudwatch_log_group" "pipeline_lambda_cloudwatch_group" {
   name              = "/aws/lambda/${aws_lambda_function.pipeline_lambda.function_name}"
   retention_in_days = 14
 }
