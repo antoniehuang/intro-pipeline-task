@@ -70,7 +70,7 @@ data "aws_iam_policy_document" "lambda_bucket_read_write_policy" {
 }
 
 resource "aws_iam_policy" "lambda_bucket_read_write_policy" {
-  name        = "lambda_sqs_read_policy"
+  name        = "lambda_bucket_read_write_policy"
   path        = "/"
   description = "IAM policy for lambda to read and write to s3"
   policy      = data.aws_iam_policy_document.lambda_bucket_read_write_policy.json
