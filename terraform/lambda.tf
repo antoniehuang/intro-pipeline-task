@@ -12,6 +12,12 @@ resource "aws_lambda_function" "pipeline_lambda" {
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.11"
 
+  environment {
+    variables = {
+      TARGET_BUCKET_NAME = "${aws_s3_bucket.datalake_bucket.id}"
+    }
+  }
+
   tags = {
     project_name = "Introductory Pipeline Task"
   }

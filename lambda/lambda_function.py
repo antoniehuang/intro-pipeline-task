@@ -1,6 +1,7 @@
 import json
 import logging
 import boto3
+import os
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -20,7 +21,7 @@ def lambda_handler(event, context):
 
     copy_source = {"Bucket": source_bucket_name, "Key": key}
 
-    target_bucket_name = "intro-pipeline-task-datalake"
+    target_bucket_name = os.environ["target_bucket"]
 
     response = s3.meta.client.copy(copy_source, target_bucket_name, key)
     logger.info("S3 Client response: %s", response)
