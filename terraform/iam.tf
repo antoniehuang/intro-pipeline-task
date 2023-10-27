@@ -67,7 +67,7 @@ data "aws_iam_policy_document" "lambda_bucket_read_write_policy" {
       "s3:PutObject"
     ]
 
-    resources = [aws_s3_bucket.source_bucket.arn, aws_s3_bucket.datalake_bucket.arn]
+    resources = ["${aws_s3_bucket.source_bucket.arn}/*", "${aws_s3_bucket.datalake_bucket.arn}/*"]
   }
 }
 
