@@ -42,7 +42,9 @@ data "aws_iam_policy_document" "lambda_sqs_read_policy" {
     effect = "Allow"
 
     actions = [
-      "sqs:ReceiveMessage"
+      "sqs:ReceiveMessage",
+      "sqs:DeleteMessage",
+      "sqs:GetQueueAttributes"
     ]
 
     resources = [aws_sqs_queue.source_bucket_event_sqs_queue.arn]
