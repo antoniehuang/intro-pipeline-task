@@ -16,3 +16,9 @@ resource "aws_lambda_function" "pipeline_lambda" {
     project_name = "Introductory Pipeline Task"
   }
 }
+
+resource "aws_lambda_event_source_mapping" "sqs_lambda_trigger" {
+  event_source_arn = aws_sqs_queue.source_bucket_event_sqs_queue.arn
+  function_name    = aws_lambda_function.pipeline_lambda.arn
+  batch_size       = 1
+}
