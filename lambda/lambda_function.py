@@ -21,7 +21,7 @@ def lambda_handler(event, context):
 
     copy_source = {"Bucket": source_bucket_name, "Key": key}
 
-    target_bucket_name = os.environ["target_bucket"]
+    target_bucket_name = os.environ["TARGET_BUCKET_NAME"]
 
     response = s3.meta.client.copy(copy_source, target_bucket_name, key)
     logger.info("S3 Client response: %s", response)
