@@ -89,3 +89,31 @@ resource "aws_iam_role_policy_attachment" "lambda_policies_attachment" {
 
   policy_arn = each.value
 }
+
+# Snowflake Access
+data "aws_iam_policy_document" "snowflake_s3_access_policy" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "s3:GetObject",
+      "s3:GetObjectVersion"
+    ]
+    resources = ["${aws_s3_bucket.datalake_bucket.arn}/*"]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "s3:ListBucket",
+      "s3:GetBucketLocation"
+    ]
+    resources = ["${aws_s3_bucket.datalake_bucket.arn}"]
+  }
+}
+
+resource "aws_iam_policy" "snowflake_s3_access_policy" {
+  name        = "snowflake_s3_access_policy"
+  path        = "/"
+  description = "IAM policy for snowflake to read from s3"
+  policy      = data.aws_iam_policy_document.snowflake_s3_access_policy.json
+}
