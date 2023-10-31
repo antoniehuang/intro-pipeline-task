@@ -89,4 +89,21 @@ data "aws_iam_policy_document" "datalake_sns_topic_policy" {
     }
 
   }
+
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::893377700453:user/5dzc0000-s"]
+    }
+
+    actions = [
+      "sns:Subscribe"
+    ]
+
+    resources = [
+      aws_sns_topic.datalake_bucket_event_sns_topic.arn
+    ]
+  }
 }
