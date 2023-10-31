@@ -22,3 +22,12 @@ resource "aws_s3_bucket" "datalake_bucket" {
     project_name = "Introductory Pipeline Task"
   }
 }
+
+resource "aws_s3_bucket_notification" "datalake_bucket_notification" {
+  bucket = aws_s3_bucket.datalake_bucket.id
+
+  topic {
+    topic_arn = aws_sns_topic.datalake_bucket_event_sns_topic.arn
+    events    = ["s3:ObjectCreated:*"]
+  }
+}
