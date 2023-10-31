@@ -61,6 +61,7 @@ data "aws_iam_policy_document" "source_sns_topic_policy" {
 
 data "aws_iam_policy_document" "datalake_sns_topic_policy" {
   statement {
+    sid    = "s3 publish"
     effect = "Allow"
 
     principals {
@@ -91,6 +92,7 @@ data "aws_iam_policy_document" "datalake_sns_topic_policy" {
   }
 
   statement {
+    sid    = "snowflake subscribe"
     effect = "Allow"
 
     principals {
