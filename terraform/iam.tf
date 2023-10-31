@@ -117,3 +117,26 @@ resource "aws_iam_policy" "snowflake_s3_access_policy" {
   description = "IAM policy for snowflake to read from s3"
   policy      = data.aws_iam_policy_document.snowflake_s3_access_policy.json
 }
+
+resource "aws_iam_role" "snowflake_role" {
+  name               = "intro-pipeline-task-snowflake-role"
+  assume_role_policy = data.aws_iam_policy_document.snowflake_assume_role.json
+}
+
+data "aws_iam_policy_document" "snowflake_assume_role" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "snowflake_role_policy_attachment" {
+  role       = aws_iam_role.snowflake_role.name
+  policy_arn = aws_iam_policy.snowflake_s3_access_policy.arn
+}
