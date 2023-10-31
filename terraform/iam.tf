@@ -128,11 +128,17 @@ data "aws_iam_policy_document" "snowflake_assume_role" {
     effect = "Allow"
 
     principals {
-      type        = "Service"
-      identifiers = ["lambda.amazonaws.com"]
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::893377700453:user/5dzc0000-s"]
     }
 
     actions = ["sts:AssumeRole"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "sts:ExternalId"
+      values   = ["CA58732_SFCRole=2_F7b6BeNiQFmeYdXUw2TmgH5cSfo="]
+    }
   }
 }
 
