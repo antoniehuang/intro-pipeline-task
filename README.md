@@ -4,7 +4,7 @@ The goal of this task is to demostratea a data pipeline that ingest data from th
 
 ## Repo Structure
 
-The repo is structured as a self contained repo, where the application code of the lambda functions, CI/CD pipelines and infrastrucue code, and sample data are all contained within this repository.
+The repo is structured as a self contained repo, where the application code of the lambda functions, CI/CD pipelines, infrastrucue code, and sample data are all contained within this repository.
 
 #### Folder strucutre
 
@@ -19,8 +19,6 @@ The repo is structured as a self contained repo, where the application code of t
 ### Terraform
 
 Terraform is used to provision AWS resources required for the pipeline in this task.
-
-``````
 
 ### CI/CD
 
